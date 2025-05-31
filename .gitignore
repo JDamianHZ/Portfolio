@@ -1,0 +1,16 @@
+# Ignora archivos de entorno
+**/.env
+
+# Node modules (si usas Node.js en el front o back)
+**/node_modules/
+
+# Archivos de producción
+**/dist/
+**/build/
+
+# Logs
+**/*.log
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
