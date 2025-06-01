@@ -21,7 +21,7 @@ const app = express()
 app.use(express.json());
 
 app.use(cors({
-  origin: 'http://localhost:5173', // permite solo tu frontend
+  origin: 'https://damianhub.site', // permite solo tu frontend
   methods: ['GET', 'POST', 'DELETE'],        // métodos permitidos
   credentials: true                // si usas cookies o auth headers
 }));
