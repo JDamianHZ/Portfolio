@@ -21,7 +21,7 @@ const app = express()
 app.use(express.json());
 
 app.use(cors({
-  origin: 'https://damianhub.site', // permite solo tu frontend
+  origin: process.env.FRONTEND_ORIGIN, // permite solo tu frontend
   methods: ['GET', 'POST', 'DELETE'],        // métodos permitidos
   credentials: true                // si usas cookies o auth headers
 }));
