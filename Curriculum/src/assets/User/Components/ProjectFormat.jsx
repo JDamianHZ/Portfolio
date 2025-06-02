@@ -25,7 +25,7 @@ const ProjectFormat = ({ title, description, imageList = [], link, onClick, disa
     >
       {imageList.length > 0 && (
         <div className="relative w-full flex justify-center">
-          <div className="h-48 w-full flex items-center justify-center overflow-hidden rounded-lg bg-gray-900">
+          <div className="h-48 w-full flex items-center justify-center overflow-hidden rounded-lg ">
             <img
               src={imageList[currentIndex]}
               alt={`Project ${currentIndex + 1}`}
@@ -53,21 +53,27 @@ const ProjectFormat = ({ title, description, imageList = [], link, onClick, disa
       )}
 
       <span>{title}</span>
-      <span className="text-sm font-normal text-center">{description}</span>
 
- {technologies.length > 0 && (
-  <div className="mt-2 flex flex-col self-start w-full">
-    <h4 className="pl-2 text-blue-500">Technologies:</h4>
-    <ul className="flex flex-wrap gap-2 pl-6 text-sm font-normal list-none">
-      {technologies.slice(0, 3).map((tech, i) => (
-        <li key={i} className="flex items-center rounded px-2 py-1 ">
-          <img src={tech.icon} alt={tech.name} className="w-20 h-auto mr-2" />
-          
-        </li>
-      ))}
-    </ul>
-  </div>
-)}
+      {/* Cuadro de descripción con tamaño fijo y texto truncado */}
+      <span
+        className="text-sm font-normal text-center max-w-full h-36 overflow-hidden text-ellipsis bg-gray-700"
+        style={{ display: '-webkit-box', WebkitLineClamp: 3, WebkitBoxOrient: 'vertical' }}
+      >
+        {description}
+      </span>
+
+      {technologies.length > 0 && (
+        <div className="mt-2 flex flex-col w-full items-center">
+          <h4 className="text-blue-500 mb-1">Technologies:</h4>
+          <ul className="flex flex-wrap gap-2 justify-center list-none p-0 m-0">
+            {technologies.slice(0, 3).map((tech, i) => (
+              <li key={i} className="flex items-center rounded px-2 py-1">
+                <img src={tech.icon} alt={tech.name} className="w-20 h-auto mr-2" />
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };

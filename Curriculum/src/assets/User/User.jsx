@@ -256,19 +256,18 @@ const handleDeleteTechnology = (id) => {
                     />
                     </div>
                     <h2 className="text-xl font-bold mb-4 text-left mt-5">PROJECTS</h2>
-                    <div className=" bg-gray-700 rounded-2xl shadow-lg p-8 text-white mx-auto  w-[100%] flex flex-col justify-center items-center ">
                         <div className=" bg-gray-700 rounded-2xl shadow-lg p-8 text-white mx-auto  w-[100%]">
                         <div className="flex flex-wrap justify-center items-center">
                             {project.map(pj => (
                                 <FormatDeleteProject key={pj.id_projects} imageList={pj.images} tittle={pj.title} onDelete={() => handleDelete(pj.id_projects)}
                             />))}
+                            
 
                             </div>
                         </div>
                         <div>
                             <Button text="Add project " onClick={openModal2}/>
                         </div>
-                    </div>
                     <h2 className="text-xl font-bold mb-4 text-left mt-5">Certifications</h2>
                     <div className=" bg-gray-700 rounded-2xl shadow-lg p-8 text-white mx-auto  w-[100%]">
                         <div className="flex flex-wrap justify-center items-center">

@@ -76,13 +76,14 @@ const ModalProject = ({ isOpen, onClose, children, imageList, link,  title, desc
                         {description}
                     </div>
                 </div>
-                <h1 className="text-xl font-bold mt-5 mb-2 text-center ">Technologies</h1>
-                <div className="w-full bg-gray-700 rounded-2xl shadow-lg flex flex-wrap items-center justify-center p-4">
-                      {icontech && icontech.map((tech, index) => (
-                        <TechnologiesModal key={index} icon={tech.icon} />
-                    ))}
-           
-                </div>
+<h1 className="text-xl font-bold mt-5 mb-2 text-center">Technologies</h1>
+<div className="w-full bg-gray-700 rounded-2xl shadow-lg flex flex-wrap justify-center items-center p-4">
+  {icontech && icontech.map((tech, index) => (
+    <div key={index} className="flex justify-center items-center m-2 ">
+      <TechnologiesModal icon={tech.icon} />
+    </div>
+  ))}
+</div>
 
 
 
