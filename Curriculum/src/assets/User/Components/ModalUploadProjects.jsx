@@ -15,6 +15,7 @@ const ModalUploadProjects = ({ isOpen, onClose, children, onUploadSuccess }) => 
 
   const [title, setTitle] = React.useState("");
   const [description, setDescription] = React.useState("");
+  const [link, setlink] = React.useState("");
 
   const [previews, setPreviews] = React.useState([]);         // Previews de imágenes
   const [selectedFiles, setSelectedFiles] = React.useState([]); // Archivos seleccionados
@@ -59,6 +60,7 @@ const ModalUploadProjects = ({ isOpen, onClose, children, onUploadSuccess }) => 
     formData.append('userId', userId);
     formData.append('title', title);
     formData.append('description', description);
+    formData.append('link', link);
 
       // Agregar cada tecnología seleccionada
   SelectTech.forEach(id => {
@@ -79,6 +81,7 @@ const ModalUploadProjects = ({ isOpen, onClose, children, onUploadSuccess }) => 
       setSelectedFiles([]);
       setTitle('');
       setDescription('');
+      setlink('');
       onClose();
     } catch (err) {
       console.error('Error al subir las imágenes:', err);
@@ -163,7 +166,10 @@ const ModalUploadProjects = ({ isOpen, onClose, children, onUploadSuccess }) => 
         <h2 className="text-xl font-bold mb-4 text-left">Description</h2>
         <AutoResizeTextarea placeholder="Add description here..." className="w-full mt-4" value={description} onChange={(e) => setDescription(e.target.value)} />
         
-        <h2 className="text-xl font-bold mb-4 text-left">Description</h2>
+        <h2 className="text-xl font-bold mb-4 text-left">Repo</h2>
+        <AutoResizeTextarea placeholder="Add your link repo here..." className="w-full mt-4" value={link} onChange={(e) => setlink(e.target.value)} />
+        
+        <h2 className="text-xl font-bold mb-4 text-left">Technologies</h2>
         <div className='mt-5 mb-8 bg-gray-700 rounded-2xl shadow-lg w-full p-4 text-center'>
                 {Technology.map((tech) => {
                     const idStr = tech.id_technologies.toString();

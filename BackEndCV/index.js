@@ -214,7 +214,7 @@ app.post('/uploadProject', upload.array('images', 5), (req, res) => {
   console.log('Body:', req.body);
   console.log('Files:', req.files);
 
-  const { title, description, userId, selectedTechnologies } = req.body;
+  const { title, description, userId, selectedTechnologies, link } = req.body;
   const files = req.files;
 
   if (!title || !description || !files || files.length === 0) {
@@ -227,9 +227,9 @@ app.post('/uploadProject', upload.array('images', 5), (req, res) => {
     technologies = [technologies];
   }
 
-  const sqlInsertProject = 'INSERT INTO projects (title, description, id_user) VALUES (?, ?, ?)';
+  const sqlInsertProject = 'INSERT INTO projects (title, description, id_user, link) VALUES (?, ?, ?, ?)';
 
-  db.query(sqlInsertProject, [title, description, userId], (err, result) => {
+  db.query(sqlInsertProject, [title, description, userId, link], (err, result) => {
     if (err) {
       console.error("Error al insertar proyecto:", err);
       return res.status(500).json({ error: "Error al guardar el proyecto." });
@@ -270,6 +270,7 @@ app.get('/projects', (req, res) => {
       p.title,
       p.description,
       p.id_user,
+      p.link,
       pi.id_image,
       pi.image_url,
       t.id_technologies,

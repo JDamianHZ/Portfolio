@@ -98,6 +98,7 @@ function Panel(){
                 title: item.title,
                 description: item.description,
                 id_user: item.id_user,
+                link: item.link,
                 images: [],
                 technologies: []
                 };
@@ -307,6 +308,7 @@ return(
             title={selectedProject?.title || ''}
             description={selectedProject?.description || ''}
              icontech={selectedProject?.technologies || []}
+            link={selectedProject?.link || ''}
             />
             
             <ModalCertificate

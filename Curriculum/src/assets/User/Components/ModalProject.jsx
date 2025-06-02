@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import ButtonIcon from"./ButtonRepo";
-import ButtonRepo from './ButtonRepo';
+import ButtonNeon from"./ButtonNeon";
 import TechnologiesModal from './TechnologiesModal';
-import GitHubRepo from"../../ImagesPanel/git.png";
 
 
 
@@ -75,15 +73,21 @@ const ModalProject = ({ isOpen, onClose, children, imageList, link,  title, desc
                     <div className='w-[100%] mt-15 bg-gray-700 rounded-2xl shadow-lg'>
                         {description}
                     </div>
+                    <div className=' mt-15 '>
+                        <ButtonNeon onClick={() => window.open(link, '_blank')}  text="Go GitHub" />
+                    </div>
                 </div>
-<h1 className="text-xl font-bold mt-5 mb-2 text-center">Technologies</h1>
-<div className="w-full bg-gray-700 rounded-2xl shadow-lg flex flex-wrap justify-center items-center p-4">
-  {icontech && icontech.map((tech, index) => (
-    <div key={index} className="flex justify-center items-center m-2 ">
-      <TechnologiesModal icon={tech.icon} />
-    </div>
-  ))}
-</div>
+                <h1 className="text-xl font-bold mt-5 mb-2 text-center">Technologies</h1>
+                <div className="w-full bg-gray-700 rounded-2xl shadow-lg flex flex-wrap justify-center items-center p-4">
+                {icontech && icontech.map((tech, index) => (
+                    <div key={index} className="flex justify-center items-center m-2 ">
+                    <TechnologiesModal icon={tech.icon} />
+                    </div>
+                ))}
+                </div>
+                <div className='w-[100%] mt-15 bg-gray-700 rounded-2xl shadow-lg'>
+                        
+                    </div>
 
 
 
