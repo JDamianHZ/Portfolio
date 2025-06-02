@@ -84,7 +84,7 @@ function Panel(){
     }
 
 
-            const getProject = () => {
+                const getProject = () => {
         Axios.get(`${API_URL}/projects`).then((response) => {
             const rawData = response.data;
 
@@ -98,12 +98,25 @@ function Panel(){
                 title: item.title,
                 description: item.description,
                 id_user: item.id_user,
-                images: []
+                images: [],
+                technologies: []
                 };
             }
 
             if (item.image_url) {
                 acc[projectId].images.push(`${API_URL}/uploads/${item.image_url}`);
+            }
+
+                       if (item.tech_icon && item.tech_name) {
+            const techExists = acc[projectId].technologies.some(
+                tech => tech.icon === `${API_URL}/uploads/${item.tech_icon}` && tech.name === item.tech_name
+            );
+            if (!techExists) {
+                acc[projectId].technologies.push({
+                icon: `${API_URL}/uploads/${item.tech_icon}`,
+                name: item.tech_name
+                });
+            }
             }
 
             return acc;
@@ -112,7 +125,7 @@ function Panel(){
             // Convertir a array
             setProject(Object.values(groupedProjects));
         });
-        };
+    };
 
 return(
     <div className="flex flex-col min-h-screen w-full bg-gray-900 text-white text-center ">
@@ -205,7 +218,7 @@ return(
             <div className=" bg-gray-800 rounded-2xl shadow-lg  text-white mx-auto  w-[95%] mt-15  ">
                 <div className='rounded-2xl shadow-lg  text-white h-full  w-[100%] md:w-[100%] p-4  gap-x-[2%] flex flex-wrap items-center justify-center'>
                     
-            {filter === "projects" &&
+             {filter === "projects" &&
                 project.map(pj => (
                 <ProjectFormat
                     key={pj.id_projects}
@@ -287,12 +300,13 @@ return(
     </div>
     </SectionMotion>
 
-            <ModalProject
+             <ModalProject
             isOpen={isModalOpen}
             onClose={closeModal}
             imageList={selectedProject?.images || []}
             title={selectedProject?.title || ''}
             description={selectedProject?.description || ''}
+             icontech={selectedProject?.technologies || []}
             />
             
             <ModalCertificate

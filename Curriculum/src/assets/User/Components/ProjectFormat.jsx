@@ -55,16 +55,19 @@ const ProjectFormat = ({ title, description, imageList = [], link, onClick, disa
       <span>{title}</span>
       <span className="text-sm font-normal text-center">{description}</span>
 
-      {technologies.length > 0 && (
-        <div className="mt-2 flex flex-col self-start w-full">
-          <h4 className="pl-2 text-blue-500">Technologies:</h4>
-          <ul className="list-disc pl-6 text-sm font-normal">
-            {technologies.map((tech, i) => (
-              <li key={i}>{tech}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+ {technologies.length > 0 && (
+  <div className="mt-2 flex flex-col self-start w-full">
+    <h4 className="pl-2 text-blue-500">Technologies:</h4>
+    <ul className="flex flex-wrap gap-2 pl-6 text-sm font-normal list-none">
+      {technologies.slice(0, 3).map((tech, i) => (
+        <li key={i} className="flex items-center rounded px-2 py-1 ">
+          <img src={tech.icon} alt={tech.name} className="w-20 h-auto mr-2" />
+          
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
     </div>
   );
 };

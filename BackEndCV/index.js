@@ -265,15 +265,20 @@ app.post('/uploadProject', upload.array('images', 5), (req, res) => {
 
 app.get('/projects', (req, res) => {
   const sql = `
-SELECT 
-  p.id_projects,
-  p.title,
-  p.description,
-  p.id_user,
-  pi.id_image,
-  pi.image_url
-FROM projects p
-LEFT JOIN project_images pi ON p.id_projects = pi.id_project
+    SELECT 
+      p.id_projects,
+      p.title,
+      p.description,
+      p.id_user,
+      pi.id_image,
+      pi.image_url,
+      t.id_technologies,
+      t.name AS tech_name,
+      t.icon AS tech_icon
+    FROM projects p
+    LEFT JOIN project_images pi ON p.id_projects = pi.id_project
+    LEFT JOIN project_technology pt ON p.id_projects = pt.id_project
+    LEFT JOIN technologies t ON pt.id_technology = t.id_technologies
   `;
 
   db.query(sql, (err, data) => {

@@ -78,12 +78,12 @@ const ModalProject = ({ isOpen, onClose, children, imageList, link,  title, desc
                 </div>
                 <h1 className="text-xl font-bold mt-5 mb-2 text-center ">Technologies</h1>
                 <div className="w-full bg-gray-700 rounded-2xl shadow-lg flex flex-wrap items-center justify-center p-4">
-                    <TechnologiesModal icon={GitHubRepo} name='GitHub' />
+                      {icontech && icontech.map((tech, index) => (
+                        <TechnologiesModal key={index} icon={tech.icon} />
+                    ))}
            
                 </div>
-                <div className='mt-5 justify-center items-center flex flex-col'>
-                    <ButtonRepo text='Repositorie' icon={GitHubRepo} link={link}/>
-                </div>
+
 
 
             </div>
